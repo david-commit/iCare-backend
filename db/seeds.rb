@@ -19,11 +19,21 @@ Patient.create!(name: "Zuri", condition: "Erbs palsy", caregiver_id: rand(1..5))
 Patient.create!(name: "Chidi", condition: "Reflexes", caregiver_id: rand(1..5))
 Patient.create!(name: "Mark", condition: "Down syndrome", caregiver_id: rand(1..5))
 
+puts "Practitioners.."
+Practitioner.create!(name: "Dr. Mila Nicks", speciality: "General Practice")
+Practitioner.create!(name: "Dr. Kelsey Pallotto", speciality: "Bones")
+Practitioner.create!(name: "Dr. Julio Chaffee", speciality: "Pediatrics")
+Practitioner.create!(name: "Dr. Charlie Bertorelli", speciality: "Nutrition")
+
 puts "Appointments.."
-
-
-
-puts "Appointments.."
-Appointment.create!(patient_id: rand(1..6), practitioner_id: rand(), duration: "2 hours", appointment_type: "")
+Appointment.create!(patient_id: rand(1..6), practitioner_id: rand(1..4), duration: "2 hours", appointment_type: "Consultation")
+Appointment.create!(patient_id: rand(1..6), practitioner_id: rand(1..4), duration: "1 hours", appointment_type: "Physiotherapy")
+Appointment.create!(patient_id: rand(1..6), practitioner_id: rand(1..4), duration: "3 hours", appointment_type: "Blood draw")
+Appointment.create!(patient_id: rand(1..6), practitioner_id: rand(1..4), duration: "1.5 hours", appointment_type: "General health")
+Appointment.create!(patient_id: rand(1..6), practitioner_id: rand(1..4), duration: "1 hours", appointment_type: "Nutrition balancing")
+Appointment.create!(patient_id: rand(1..6), practitioner_id: rand(1..4), duration: "1 hours", appointment_type: "Consultation")
+Appointment.create!(patient_id: rand(1..6), practitioner_id: rand(1..4), duration: "1 hours", appointment_type: "Bone checkup")
+Appointment.create!(patient_id: rand(1..6), practitioner_id: rand(1..4), duration: "1.5 hours", appointment_type: "Dentistry")
+Appointment.create!(patient_id: rand(1..6), practitioner_id: rand(1..4), duration: "2 hours", appointment_type: "Dermatology")
 
 puts "Done seeding!"
