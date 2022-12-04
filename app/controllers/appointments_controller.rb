@@ -23,6 +23,7 @@ class AppointmentsController < ApplicationController
 
  def app_params
   params.permit(:patient_id, :practitioner_id, :duration, :appointment_type)
+  # Use created_at as booking date
  end
 
 end
