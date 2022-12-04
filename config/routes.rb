@@ -1,7 +1,5 @@
 Rails.application.routes.draw do
-  resources :caregivers
-  # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
-
-  # Defines the root path route ("/")
-  # root "articles#index"
+  resources :caregivers, only: [:index, :create]
+  resources :patients, only: [:index, :create]
+  get "/patients/#{patient.name}", to: "patients#show"
 end
