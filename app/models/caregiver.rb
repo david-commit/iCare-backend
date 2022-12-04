@@ -1,5 +1,5 @@
 class Caregiver < ApplicationRecord
- belongs_to :patient
+ has_many :patient
 
  validates :name, presence: true
  validates :phone, presence: true, length: { minimum: 8 }

@@ -18,4 +18,10 @@ class PatientsController < ApplicationController
   render json: patient, status: :created
  end
 
+ private
+
+ def patient_params
+  params.permit(:name, :condition, :caregiver_id)
+ end
+
 end

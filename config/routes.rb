@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
+  resources :appointments
   resources :caregivers, only: [:index, :create]
   resources :patients, only: [:index, :create]
-  get "/patients/#{patient.name}", to: "patients#show"
+  get "/me", to: "patients#show"
 end
