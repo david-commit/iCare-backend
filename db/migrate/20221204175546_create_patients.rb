@@ -4,6 +4,7 @@ class CreatePatients < ActiveRecord::Migration[7.0]
       t.string :name
       t.string :condition
       t.integer :caregiver_id
+      t.string :password_digest
 
       t.timestamps
     end

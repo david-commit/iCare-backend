@@ -35,6 +35,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_12_04_220436) do
     t.string "name"
     t.string "condition"
     t.integer "caregiver_id"
+    t.string "password_digest"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

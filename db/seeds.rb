@@ -13,12 +13,12 @@ Caregiver.create!(name: "Eva", phone: Faker::PhoneNumber.cell_phone_in_e164, rel
 Caregiver.create!(name: "Hilary", phone: Faker::PhoneNumber.cell_phone_in_e164, relation: "Father")
 
 puts "Patients.."
-Patient.create!(name: "Mike", condition: "Celebral Palsy", caregiver_id: rand(1..5))
-Patient.create!(name: "Kwame", condition: "ADHD", caregiver_id: rand(1..5))
-Patient.create!(name: "Yvonne", condition: "Autism", caregiver_id: rand(1..5))
-Patient.create!(name: "Zuri", condition: "Erbs palsy", caregiver_id: rand(1..5))
-Patient.create!(name: "Chidi", condition: "Reflexes", caregiver_id: rand(1..5))
-Patient.create!(name: "Mark", condition: "Down syndrome", caregiver_id: rand(1..5))
+Patient.create!(name: "Mike", password: "Mike", password_confirmation: "Mike", condition: "Celebral Palsy", caregiver_id: rand(1..5))
+Patient.create!(name: "Kwame", password: "Kwame", password_confirmation: "Kwame", condition: "ADHD", caregiver_id: rand(1..5))
+Patient.create!(name: "Yvonne", password: "Yvonne", password_confirmation: "Yvonne" ,condition: "Autism", caregiver_id: rand(1..5))
+Patient.create!(name: "Zuri", password: "Zuri", password_confirmation: "Zuri", condition: "Erbs palsy", caregiver_id: rand(1..5))
+Patient.create!(name: "Chidi", password: "Chidi", password_confirmation: "Chidi", condition: "Reflexes", caregiver_id: rand(1..5))
+Patient.create!(name: "Mark", password: "Mark", password_confirmation: "Mark", condition: "Down syndrome", caregiver_id: rand(1..5))
 
 puts "Practitioners.."
 Practitioner.create!(name: "Dr. Mila Nicks", speciality: "General Practice")
