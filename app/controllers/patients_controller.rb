@@ -16,13 +16,14 @@ rescue_from ActiveRecord::RecordInvalid, with: :render_record_invalid_response
  def create
   # Anyone can create a patient record
   patient = Patient.create!(patient_params)
+  session[:patient_id] = patient.id
   render json: patient, status: :created
  end
 
  private
 
  def patient_params
-  params.permit(:name, :condition, :caregiver_id)
+  params.permit(:name, :password, :password_confirmation, :condition, :caregiver_id)
  end
 
   def render_record_invalid_response(e)

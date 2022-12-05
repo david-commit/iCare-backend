@@ -4,6 +4,6 @@ Rails.application.routes.draw do
   get "/patients/me", to: "patients#show"
   resources :appointments, only: [:index, :create, :show]
   resources :practitioners, only: [:index]
-  post "/signup", to: "pateints#create"
+  post "/signup", to: "patients#create"
   get "/tests", to: "tests#index"
 end
