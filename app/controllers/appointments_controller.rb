@@ -1,4 +1,5 @@
 class AppointmentsController < ApplicationController
+rescue_from ActiveRecord::RecordInvalid, with: :render_record_invalid_response
 
  def index
   # ONLY logged in practitioners are authorized
@@ -24,6 +25,10 @@ class AppointmentsController < ApplicationController
  def app_params
   params.permit(:patient_id, :practitioner_id, :duration, :appointment_type)
   # Use created_at as booking date
+ end
+
+ def render_record_invalid_response(e)
+  render json: { errors: e.record.errors.full_messages }, status: :unprocessable_entity
  end
 
 end

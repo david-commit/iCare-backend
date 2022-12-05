@@ -1,4 +1,5 @@
 class PatientsController < ApplicationController
+rescue_from ActiveRecord::RecordInvalid, with: :render_record_invalid_response
 
  def index
   # Only viewbable to logged in practitioners
@@ -22,6 +23,10 @@ class PatientsController < ApplicationController
 
  def patient_params
   params.permit(:name, :condition, :caregiver_id)
+ end
+
+  def render_record_invalid_response(e)
+  render json: { errors: e.record.errors.full_messages }, status: :unprocessable_entity
  end
 
 end
