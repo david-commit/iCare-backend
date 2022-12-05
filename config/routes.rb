@@ -5,4 +5,5 @@ Rails.application.routes.draw do
   resources :appointments, only: [:index, :create, :show]
   resources :practitioners, only: [:index]
   post "/signup", to: "pateints#create"
+  get "/tests", to: "tests#index"
 end
