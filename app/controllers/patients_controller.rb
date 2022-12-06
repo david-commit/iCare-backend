@@ -1,6 +1,6 @@
 class PatientsController < ApplicationController
- skip_before_action :create
- before_action :authorize
+ # skip_before_action :create
+ # before_action :authorize
 rescue_from ActiveRecord::RecordInvalid, with: :render_record_invalid_response
 
  def index
