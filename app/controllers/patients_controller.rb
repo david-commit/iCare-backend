@@ -1,4 +1,6 @@
 class PatientsController < ApplicationController
+ skip_before_action :create
+ before_action :authorize
 rescue_from ActiveRecord::RecordInvalid, with: :render_record_invalid_response
 
  def index
@@ -9,7 +11,7 @@ rescue_from ActiveRecord::RecordInvalid, with: :render_record_invalid_response
 
  def show
   # Only viewable to specific logged in patient
-  patient = Patient.find(params[:id])
+  patient = Patient.find(session[:patient_id])
   render json: patient, status: :ok
  end
 
@@ -28,6 +30,10 @@ rescue_from ActiveRecord::RecordInvalid, with: :render_record_invalid_response
 
   def render_record_invalid_response(e)
   render json: { errors: e.record.errors.full_messages }, status: :unprocessable_entity
+ end
+
+ def authorize
+  render json: { error: "Unauthorized" }, status: :unauthorized unless session.include? :patient_id
  end
 
 end

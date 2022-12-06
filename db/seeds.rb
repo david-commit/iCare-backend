@@ -1,16 +1,16 @@
-puts "Destroying all..."
-Caregiver.destroy_all
-Patient.destroy_all
-Practitioner.destroy_all
-Appointment.destroy_all
+# puts "Destroying all..."
+# Caregiver.destroy_all
+# Patient.destroy_all
+# Practitioner.destroy_all
+# Appointment.destroy_all
 
 puts "Start seeding..."
 puts "Caregivers.."
-Caregiver.create!(name: "Brian", phone: Faker::PhoneNumber.cell_phone_in_e164, relation: "Brother")
-Caregiver.create!(name: "Mary", phone: Faker::PhoneNumber.cell_phone_in_e164, relation: "Sister")
-Caregiver.create!(name: "Maisy", phone: Faker::PhoneNumber.cell_phone_in_e164, relation: "Mother")
-Caregiver.create!(name: "Eva", phone: Faker::PhoneNumber.cell_phone_in_e164, relation: "Mother")
-Caregiver.create!(name: "Hilary", phone: Faker::PhoneNumber.cell_phone_in_e164, relation: "Father")
+Caregiver.create!(name: "Brian Mwangi", phone: Faker::PhoneNumber.cell_phone_in_e164, relation: "Brother")
+Caregiver.create!(name: "Mary Mukuna", phone: Faker::PhoneNumber.cell_phone_in_e164, relation: "Sister")
+Caregiver.create!(name: "Maisy Avril", phone: Faker::PhoneNumber.cell_phone_in_e164, relation: "Mother")
+Caregiver.create!(name: "Eva Nuru Bobo", phone: Faker::PhoneNumber.cell_phone_in_e164, relation: "Mother")
+Caregiver.create!(name: "Hilary Laaban", phone: Faker::PhoneNumber.cell_phone_in_e164, relation: "Father")
 
 puts "Patients.."
 Patient.create!(name: "Mike", password: "Mike", password_confirmation: "Mike", condition: "Celebral Palsy", caregiver_id: rand(1..5))
