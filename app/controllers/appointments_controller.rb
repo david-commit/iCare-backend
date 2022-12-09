@@ -20,6 +20,16 @@ rescue_from ActiveRecord::RecordInvalid, with: :render_record_invalid_response
   render json: app, status: :ok
  end
 
+ def destroy
+  app = Appointment.find_by(id: params[:id])
+  if app
+   app.delete
+   head :no_content
+  else
+   render json: { error: "Not authorized" }, status: :unauthorized
+  end
+ end
+
  private
 
  def app_params
