@@ -1,29 +1,27 @@
 class PatientsController < ApplicationController
-rescue_from ActiveRecord::RecordNotFound, with: :render_record_invalid_response
+ rescue_from ActiveRecord::RecordInvalid, with: :render_record_invalid_response
 
+ # List of all patients
  def index
-  # Only viewbable to logged in practitioners
   patients = Patient.all 
   render json: patients, status: :ok
  end
 
- def show
-  # Only viewable to specific logged in patient
-  patient = Patient.find_by(id: session[:patient_id])
-  if session.include? :patient_id
-    render json: patient, status: :created 
-  else
-    render json: { errors: "Not authorized" }, status: :unauthorized
-  end
-    # return render json: { errors: "Not authorized" }, status: :unauthorized unless session.include? :patient_id
-    #   render json: patient, status: :created 
- end
-
+ # Create a new patient
  def create
-  # Anyone can create a patient record
   patient = Patient.create!(patient_params)
   session[:patient_id] = patient.id
   render json: patient, status: :created
+ end
+
+ # Display logged in patient info (current user)
+ def show
+  patient = Patient.find_by(id: session[:patient_id])
+  if patient
+   render json: patient, status: :ok, serializer: BookedAppSerializerSerializer
+  else
+   render json: { error: "Not authorized" }, status: :unauthorized
+  end
  end
 
  private
@@ -32,8 +30,8 @@ rescue_from ActiveRecord::RecordNotFound, with: :render_record_invalid_response
   params.permit(:name, :password, :password_confirmation, :condition, :caregiver_id)
  end
 
-  def render_record_invalid_response(e)
-  render json: { errors: e.errors.full_messages }, status: :unprocessable_entity
+ def render_record_invalid_response(e)
+  render json: { errors: e.record.errors.full_messages }, status: :unprocessable_entity
  end
 
 end

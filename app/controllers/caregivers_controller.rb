@@ -1,27 +1,24 @@
 class CaregiversController < ApplicationController
+ rescue_from ActiveRecord::RecordInvalid, with: :render_record_invalid_response
 
  def index
-  # Only logged in users: patients or practitioners
-  care = Caregiver.all
+  care = Caregiver.all 
   render json: care, status: :ok
  end
 
  def create
-  # Only logged in practitioner
-  care = Caregiver.create!(caregiver_params)
+  care = Caregiver.create(care_params)
   render json: care, status: :created
  end
 
  private
 
- def caregiver_params
+ def care_params
   params.permit(:name, :phone, :relation)
  end
 
+ def render_record_invalid_response(e)
+  render json: { errors: e.record.errors.full_messages }, status: :unprocessable_entity
+ end
+
 end
-
-# A user can:
-# > See al list of all caregivers
-
-# A logged in user can:
-# > Add a caregiver

@@ -4,7 +4,6 @@ class CreateCaregivers < ActiveRecord::Migration[7.0]
       t.string :name
       t.string :phone
       t.string :relation
-      # t.integer :patient_id
 
       t.timestamps
     end

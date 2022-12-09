@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
-  resources :caregivers, only: [:index, :create]
+
+  get "/caregivers", to: "caregivers#index"
+  post "/caregivers", to: "caregivers#create"
 
   get "/patients", to: "patients#index"
   post "/signup", to: "patients#create"
@@ -7,11 +9,14 @@ Rails.application.routes.draw do
 
   post "/login", to: "sessions#create"
   delete "/logout", to: "sessions#destroy"
-  
+
+  get "/appointments", to: "appointments#index"
+  get "/appointments/:id", to: "appointments#show"
+  post "/appointments", to: "appointments#create"
   delete "/appointments/:id", to: "appointments#destroy"
-  resources :appointments, only: [:index, :create, :show]
   
-  resources :practitioners, only: [:index]
-  
-  get "/tests", to: "tests#index"
+  get "/practitioners", to: "practitioners#index"
+
+  get "/test", to: "tests#index"
+
 end
