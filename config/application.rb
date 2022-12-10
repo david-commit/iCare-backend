@@ -33,15 +33,15 @@ module IcareBackend
 
 
     # =================CORS CONFIG
-    Rails.application.config.middleware.insert_before 0, Rack::Cors do
-      allow do
-        origins 'https://i-care-frontend.vercel.app', 'https://i-care-frontend-31lb6ffoq-david-commit.vercel.app'
+    # Rails.application.config.middleware.insert_before 0, Rack::Cors do
+    #   allow do
+    #     origins 'https://i-care-frontend.vercel.app', 'https://i-care-frontend-31lb6ffoq-david-commit.vercel.app'
 
-        resource '*',
-          headers: :any,
-          methods: [:get, :post, :put, :patch, :delete, :options, :head]
-      end
-    end
+    #     resource '*',
+    #       headers: :any,
+    #       methods: [:get, :post, :put, :patch, :delete, :options, :head]
+    #   end
+    # end
     # =================CORS CONFIG
 
 
