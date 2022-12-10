@@ -30,5 +30,21 @@ module IcareBackend
 
       # Use SameSite=Strict for all cookies to help protect against CSRF
     config.action_dispatch.cookies_same_site_protection = :strict
+
+
+    # =================CORS CONFIG
+      config.middleware.insert_before 0, "Rack::Cors" do
+      allow do
+        origins '*'
+        resource(
+          '*',
+          headers: :any,
+          methods: [:get, :patch, :put, :delete, :post, :options]
+          )
+      end
+    end
+    # =================CORS CONFIG
+
+
   end
 end
