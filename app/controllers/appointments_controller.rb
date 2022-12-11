@@ -17,9 +17,14 @@ rescue_from ActiveRecord::RecordInvalid, with: :render_record_invalid_response
  end
 
  def destroy
-  app = Appointment.find(params[:id])
+  app = Appointment.find_by(id: params[:id])
   app.destroy
   head :no_content
+ end
+
+ def update
+  app = Appointment.find_by(id: params[:id])
+  app.update!(app_params)
  end
 
  private

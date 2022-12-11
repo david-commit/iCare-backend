@@ -14,6 +14,7 @@ Rails.application.routes.draw do
   get "/appointments/:id", to: "appointments#show"
   post "/appointments", to: "appointments#create"
   delete "/appointments/:id", to: "appointments#destroy"
+  patch "/appointments/:id", to: "appointments#update"
   
   get "/practitioners", to: "practitioners#index"
 
